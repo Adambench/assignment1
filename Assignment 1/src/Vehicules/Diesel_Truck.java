@@ -8,9 +8,29 @@ public class Diesel_Truck extends Vehicule {
 
     public Diesel_Truck(){
         super();
-        vehiculeNumber++;
         this.fuelTankCapacity = 0;
         this.maxWeight = 0;
+
+        vehiculeNumber++;
+        this.plateNumber = "DT" + vehiculeNumber;
+    }
+
+
+    public Diesel_Truck(int make, String model, int year, double maxWeight, double fuelTankCapacity){
+        super(make, model, year);
+        this.maxWeight = maxWeight;
+        this.fuelTankCapacity =  fuelTankCapacity;
+
+        vehiculeNumber++;
+        this.plateNumber = "DT" + vehiculeNumber;
+    }
+
+    public Diesel_Truck(Diesel_Truck truck){
+        super(truck.make, truck.model, truck.year);
+        this.maxWeight = truck.maxWeight;
+        this.fuelTankCapacity =  truck.fuelTankCapacity;
+
+        vehiculeNumber++;
         this.plateNumber = "DT" + vehiculeNumber;
     }
 

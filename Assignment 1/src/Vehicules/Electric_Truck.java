@@ -9,12 +9,31 @@ public class Electric_Truck extends Vehicule {
     
     public Electric_Truck(){
         super();
-        vehiculeNumber++;
         this.maxAutoRange = 0;
         this.maxWeight = 0;
+
+        vehiculeNumber++;
         this.plateNumber = "ET" + vehiculeNumber;
     }
 
+    public Electric_Truck(int make, String model, int year, double maxAutoRange, double maxWeight){
+        super(make, model, year);
+        this.maxAutoRange = maxAutoRange;
+        this.maxWeight =  maxWeight;
+
+        vehiculeNumber++;
+        this.plateNumber = "ET" + vehiculeNumber;
+    }
+
+    public Electric_Truck(Electric_Truck truck){
+        super(truck.make, truck.model, truck.year);
+        this.maxAutoRange = truck.maxAutoRange;
+        this.maxWeight =  truck.maxWeight;
+
+        vehiculeNumber++;
+        this.plateNumber = "ET" + vehiculeNumber;
+    }
+    
 
     public double getMaxWeight(){return this.maxWeight;}
 
