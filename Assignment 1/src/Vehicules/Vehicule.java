@@ -7,5 +7,6 @@ public class Vehicule {
     private int make;
     private String model;
     private int year;
+    private int cool;
 }
 
