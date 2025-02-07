@@ -10,8 +10,9 @@ public class Vehicule {
     
     
 public Vehicule(){
-    vehiculeNumber++;
-    this.plateNumber=
+    this.make = 0;
+    this.model = "No model";
+    this.year = 0;
 }
 }
 
