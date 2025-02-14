@@ -16,7 +16,7 @@ public class Diesel_Truck extends Vehicule {
     }
 
 
-    public Diesel_Truck(int make, String model, int year, double maxWeight, double fuelTankCapacity){
+    public Diesel_Truck(String make, String model, int year, double maxWeight, double fuelTankCapacity){
         super(make, model, year);
         this.maxWeight = maxWeight;
         this.fuelTankCapacity =  fuelTankCapacity;

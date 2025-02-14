@@ -4,7 +4,7 @@ package Vehicules;
 public class Vehicule {
 
     protected String plateNumber;
-    protected int make;
+    protected String make;
     protected String model;
     protected int year;
     
@@ -15,7 +15,7 @@ public class Vehicule {
         this.year = 0;
     }
 
-    public Vehicule(int make, String model, int year){
+    public Vehicule(String make, String model, int year){
         this.make = make;
         this.model = model;
         this.year = year;

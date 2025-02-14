@@ -16,7 +16,7 @@ public class Electric_Car extends Vehicule {
     }
 
 
-    public Electric_Car(int make, String model, int year, double maxAutoRange, int maxPassenger){
+    public Electric_Car(String make, String model, int year, double maxAutoRange, int maxPassenger){
         super(make, model, year);
         this.maxPassenger = maxPassenger;
         this.maxAutoRange = maxAutoRange;

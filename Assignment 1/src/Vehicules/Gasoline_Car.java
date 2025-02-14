@@ -15,7 +15,7 @@ public class Gasoline_Car extends Vehicule{
     }
 
 
-    public Gasoline_Car(int make, String model, int year, int maxPassenger){
+    public Gasoline_Car(String make, String model, int year, int maxPassenger){
         super(make, model, year);
         this.maxPassenger = maxPassenger;
 

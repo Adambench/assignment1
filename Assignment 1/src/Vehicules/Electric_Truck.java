@@ -16,7 +16,7 @@ public class Electric_Truck extends Vehicule {
         this.plateNumber = "ET" + vehiculeNumber;
     }
 
-    public Electric_Truck(int make, String model, int year, double maxAutoRange, double maxWeight){
+    public Electric_Truck(String make, String model, int year, double maxAutoRange, double maxWeight){
         super(make, model, year);
         this.maxAutoRange = maxAutoRange;
         this.maxWeight =  maxWeight;
