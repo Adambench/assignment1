@@ -13,6 +13,7 @@ public class Driver {
         // Array containing all the clients
         Client[] client_Arr = new Client[0];
 
+
         // Arrays that contain vehicles. One array for each type
         Electric_Truck[] electricTruck_Arr = new Electric_Truck[0];
         Diesel_Truck[] dieselTrucks_Arr = new Diesel_Truck[0];
@@ -26,6 +27,13 @@ public class Driver {
         boolean app = true;
         int choice;
         int vehicleTypeChoice;
+        String make;
+        String model;
+        int year;
+        double maxAutoRange;
+        int maxPassenger;
+        double maxWeight;
+        double fuelTankCapacity;
 
         while (app) {
             System.out.println("What would you like to do? \n"
@@ -64,60 +72,58 @@ public class Driver {
                     switch (vehicleTypeChoice) {
                         case 1:
                         System.out.println("What is the make (company) of the electric truck: ");
-                        String make = sc.next();
+                        make = sc.next();
                         System.out.println("What is the model of the electric truck: ");
-                        String model = sc.next();
+                        model = sc.next();
                         System.out.println("What is the year of the electric truck: ");
-                        int year = sc.nextInt();
+                        year = sc.nextInt();
                         System.out.println("What is the maximum autonomy range (in km) of the electric truck: ");
-                        double maxAutoRange = sc.nextDouble();
+                        maxAutoRange = sc.nextDouble();
                         System.out.println("What is the maximum weight capacity (in kg) of the electric truck: ");
-                        double maxWeight = sc.nextDouble();
+                        maxWeight = sc.nextDouble();
                           
-                        Electric_Truck() eTruck1 = new Electric_Truck(make,model,year,maxAutoRange,maxWeight);
+                        Electric_Truck eTruck1 = new Electric_Truck(make,model,year,maxAutoRange,maxWeight);
 
                         case 2:
                         System.out.println("What is the make (company) of the electric car: ");
-                        String make = sc.next();
+                        make = sc.next();
                         System.out.println("What is the model of the electric car: ");
-                        String model = sc.next();
+                        model = sc.next();
                         System.out.println("What is the year of the electric car: ");
-                        int year = sc.nextInt();
+                        year = sc.nextInt();
                         System.out.println("What is the maximum autonomy range (in km) of the electric car: ");
-                        double maxAutoRange = sc.nextDouble();
+                        maxAutoRange = sc.nextDouble();
                         System.out.println("What is the maximum number of passenger of the electric car: ");
-                        int maxPassenger = sc.nextInt();
+                        maxPassenger = sc.nextInt();
                           
-                        Electric_Car() eCar1 = new Electric_Car(make,model,year,maxAutoRange,maxPassenger);
+                        Electric_Car eCar1 = new Electric_Car(make,model,year,maxAutoRange,maxPassenger);
 
                         case 3:
                         System.out.println("What is the make (company) of the diesel truck: ");
-                        String make = sc.next();
+                        make = sc.next();
                         System.out.println("What is the model of the diesel truck: ");
-                        String model = sc.next();
+                        model = sc.next();
                         System.out.println("What is the year of the diesel truck: ");
-                        int year = sc.nextInt();
+                        year = sc.nextInt();
                         System.out.println("What is the maximum fuel tank capacity of the diesel truck: ");
-                        double fuelTankCapacity = sc.nextDouble();
+                        fuelTankCapacity = sc.nextDouble();
                         System.out.println("What is the maximum weight capacity (in kg) of the diesel truck: ");
-                        double maxWeight = sc.nextDouble();
+                        maxWeight = sc.nextDouble();
                           
-                        Diesel_Truck() dTruck1 = new Diesel_Truck(make,model,year,maxWeight,fuelTankCapacity);
+                        Diesel_Truck dTruck1 = new Diesel_Truck(make,model,year,maxWeight,fuelTankCapacity);
 
                         case 4:
-                        System.out.println("What is the make (company) of the electric car: ");
-                        String make = sc.next();
-                        System.out.println("What is the model of the electric car: ");
-                        String model = sc.next();
-                        System.out.println("What is the year of the electric car: ");
-                        int year = sc.nextInt();
-                        System.out.println("What is the maximum autonomy range (in km) of the electric car: ");
-                        double maxAutoRange = sc.nextDouble();
-                        System.out.println("What is the maximum number of passenger of the electric car: ");
-                        int maxPassenger = sc.nextInt();
+                        System.out.println("What is the make (company) of the gasoline car: ");
+                        make = sc.next();
+                        System.out.println("What is the model of the gasoline car: ");
+                        model = sc.next();
+                        System.out.println("What is the year of the gasoline car: ");
+                        year = sc.nextInt();
+                        System.out.println("What is the maximum number of passenger of the gasoline car: ");
+                        maxPassenger = sc.nextInt();
                           
-                        Electric_Car() eCar1 = new Electric_Car(make,model,year,maxAutoRange,maxPassenger);
-                        
+                        Gasoline_Car gCar1 = new Gasoline_Car(make,model,year,maxPassenger);
+
                             break;
                         
                         default:
