@@ -2,7 +2,7 @@ package Driver;
 import java.util.Scanner;
 
 import Vehicules.*;
-import Client.Client;
+import Client.*;
 
 public class Driver {
     
