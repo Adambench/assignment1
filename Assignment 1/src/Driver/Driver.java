@@ -140,10 +140,38 @@ public class Driver {
 
                     break;
 
-                case 2:
+                case 12:
+                    break;
+
+                case 13:
+                    break;
+
+                case 14:
                     break;
 
 
+                case 21:
+                    break;
+
+                case 22:
+                    break;
+
+                case 23:
+                    break;
+
+
+                case 31:
+                
+                    break;  
+
+                case 32:
+                    break;
+
+                case 33:
+                    break;
+
+                case 34:
+                    break;  
 
                 case 0:
                     app = false;
