@@ -59,7 +59,7 @@ public class Driver {
             choice = sc.nextInt();
 
             switch (choice) {
-                case 1:
+                case 11:
                     
                     System.out.println("Which type of vehicle would you like to add? \n"
                     + "1. Electric truck \n"
@@ -71,10 +71,11 @@ public class Driver {
 
                     switch (vehicleTypeChoice) {
                         case 1:
+                        sc.nextLine();
                         System.out.println("What is the make (company) of the electric truck: ");
-                        make = sc.next();
+                        make = sc.nextLine();
                         System.out.println("What is the model of the electric truck: ");
-                        model = sc.next();
+                        model = sc.nextLine();
                         System.out.println("What is the year of the electric truck: ");
                         year = sc.nextInt();
                         System.out.println("What is the maximum autonomy range (in km) of the electric truck: ");
@@ -83,12 +84,14 @@ public class Driver {
                         maxWeight = sc.nextDouble();
                           
                         Electric_Truck eTruck1 = new Electric_Truck(make,model,year,maxAutoRange,maxWeight);
+                        break;
 
                         case 2:
+                        sc.nextLine();
                         System.out.println("What is the make (company) of the electric car: ");
-                        make = sc.next();
+                        make = sc.nextLine();
                         System.out.println("What is the model of the electric car: ");
-                        model = sc.next();
+                        model = sc.nextLine();
                         System.out.println("What is the year of the electric car: ");
                         year = sc.nextInt();
                         System.out.println("What is the maximum autonomy range (in km) of the electric car: ");
@@ -97,12 +100,14 @@ public class Driver {
                         maxPassenger = sc.nextInt();
                           
                         Electric_Car eCar1 = new Electric_Car(make,model,year,maxAutoRange,maxPassenger);
+                        break;
 
                         case 3:
+                        sc.nextLine();
                         System.out.println("What is the make (company) of the diesel truck: ");
-                        make = sc.next();
+                        make = sc.nextLine();
                         System.out.println("What is the model of the diesel truck: ");
-                        model = sc.next();
+                        model = sc.nextLine();
                         System.out.println("What is the year of the diesel truck: ");
                         year = sc.nextInt();
                         System.out.println("What is the maximum fuel tank capacity of the diesel truck: ");
@@ -111,12 +116,14 @@ public class Driver {
                         maxWeight = sc.nextDouble();
                           
                         Diesel_Truck dTruck1 = new Diesel_Truck(make,model,year,maxWeight,fuelTankCapacity);
+                        break;
 
                         case 4:
+                        sc.nextLine();
                         System.out.println("What is the make (company) of the gasoline car: ");
-                        make = sc.next();
+                        make = sc.nextLine();
                         System.out.println("What is the model of the gasoline car: ");
-                        model = sc.next();
+                        model = sc.nextLine();
                         System.out.println("What is the year of the gasoline car: ");
                         year = sc.nextInt();
                         System.out.println("What is the maximum number of passenger of the gasoline car: ");
@@ -127,7 +134,7 @@ public class Driver {
                             break;
                         
                         default:
-
+                        
                             break;
                     }
 
