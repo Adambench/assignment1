@@ -10,7 +10,7 @@ public class Vehicule {
     
     
     public Vehicule(){
-        this.make = 0;
+        this.make = "No make";
         this.model = "No model";
         this.year = 0;
     }
@@ -29,7 +29,7 @@ public class Vehicule {
 
     public String getPlateNumber(){return this.plateNumber;}
 
-    public int getMake(){return this.make;}
+    public String getMake(){return this.make;}
 
     public String getModel(){return this.model;}
 
