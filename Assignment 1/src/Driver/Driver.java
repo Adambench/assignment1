@@ -1,8 +1,8 @@
 package Driver;
 import java.util.Scanner;
 
-import Vehicules.*;
 import Client.*;
+import Vehicles.*;
 
 public class Driver {
     
@@ -18,7 +18,7 @@ public class Driver {
         Diesel_Truck[] dieselTrucks_Arr = new Diesel_Truck[0];
         Electric_Car[] electricCars_Arr = new Electric_Car[0];
         Gasoline_Car[] gasolineCars_Arr = new Gasoline_Car[0];
-        Vehicule[] tempArr = new Vehicule[1];
+        Vehicle[] tempArr = new Vehicle[1];
 
         // The array that stores all client-vehicle relations
         String[] clientVehicleRelation = new String[0];

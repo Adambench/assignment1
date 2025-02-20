@@ -1,7 +1,7 @@
-package Vehicules;
+package Vehicles;
 
 
-public class Vehicule {
+public class Vehicle {
 
     protected String plateNumber;
     protected String make;
@@ -9,19 +9,19 @@ public class Vehicule {
     protected int year;
     
     
-    public Vehicule(){
+    public Vehicle(){
         this.make = "No make";
         this.model = "No model";
         this.year = 0;
     }
 
-    public Vehicule(String make, String model, int year){
+    public Vehicle(String make, String model, int year){
         this.make = make;
         this.model = model;
         this.year = year;
     }
 
-    public Vehicule(Vehicule vehicule){
+    public Vehicle(Vehicle vehicule){
         this.make = vehicule.make;
         this.model = vehicule.model;
         this.year = vehicule.year;
@@ -41,6 +41,11 @@ public class Vehicule {
         + "Model: " + this.model + "\n"
         + "Year: " + this.year + "\n"
         + "Plate Number: " + this.plateNumber;
+    }
+
+
+    public boolean equals(Vehicle vehicle){
+
     }
 
 }

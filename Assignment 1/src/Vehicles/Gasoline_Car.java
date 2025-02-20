@@ -1,6 +1,6 @@
-package Vehicules;
+package Vehicles;
 
-public class Gasoline_Car extends Vehicule{
+public class Gasoline_Car extends Vehicle{
 
     private int maxPassenger;
 
@@ -33,6 +33,7 @@ public class Gasoline_Car extends Vehicule{
 
     public double getMaxPasenger(){return this.maxPassenger;}
 
+    @Override
     public String toString(){
         return super.toString() + "\n"
         + "Max number of passenger: " + maxPassenger + "\n";

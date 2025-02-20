@@ -1,6 +1,6 @@
-package Vehicules;
+package Vehicles;
 
-public class Diesel_Truck extends Vehicule {
+public class Diesel_Truck extends Vehicle {
     private double maxWeight; // Weight it can transport in kg
     private double fuelTankCapacity;
 
@@ -38,6 +38,7 @@ public class Diesel_Truck extends Vehicule {
 
     public double getFuelTankCapacity(){return this.fuelTankCapacity;}
 
+    @Override
     public String toString(){
         return super.toString() + "\n"
         + "Max fuel tank capacity: " + fuelTankCapacity + " L\n"

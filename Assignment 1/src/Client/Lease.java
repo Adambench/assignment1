@@ -1,16 +1,16 @@
 package Client;
-import Vehicules.Vehicule;
+import Vehicles.Vehicle;
 
 public class Lease {
     private Client client;
-    private Vehicule vehicule;
+    private Vehicle vehicle;
     private String leaseDate;
     private String returnDate;
     private boolean isActive;
 
-    public Lease(Client client, Vehicule vehicule, String leaseDate, String returnDate) {
+    public Lease(Client client, Vehicle Vehicle, String leaseDate, String returnDate) {
         this.client = client;
-        this.vehicule = vehicule;
+        this.vehicle = Vehicle;
         this.leaseDate = leaseDate;
         this.returnDate = returnDate;
         this.isActive = true; // Lease is active when created
@@ -18,7 +18,7 @@ public class Lease {
 
     // Getters
     public Client getClient() { return client; }
-    public Vehicule getVehicule() { return vehicule; }
+    public Vehicle getVehicle() { return vehicle; }
     public String getLeaseDate() { return leaseDate; }
     public String getReturnDate() { return returnDate; }
     public boolean isActive() { return isActive; }
@@ -32,7 +32,7 @@ public class Lease {
     public String toString() {
         return "Lease{" +
                 "Client=" + client.getName() +
-                ", Vehicule=" + vehicule.getPlateNumber() +
+                ", Vehicle=" + vehicle.getPlateNumber() +
                 ", Lease Date=" + leaseDate +
                 ", Return Date=" + returnDate +
                 ", Active=" + isActive +

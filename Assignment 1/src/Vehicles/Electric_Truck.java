@@ -1,6 +1,6 @@
-package Vehicules;
+package Vehicles;
 
-public class Electric_Truck extends Vehicule {
+public class Electric_Truck extends Vehicle {
     private double maxAutoRange; // Max range in km
     private double maxWeight; // Weight it can transport in kg
 
@@ -40,7 +40,7 @@ public class Electric_Truck extends Vehicule {
     public double getMaxAutoRange(){return this.maxAutoRange;}
 
 
-
+    @Override
     public String toString(){
         return super.toString() + "\n"
         + "Max truck range: " + maxAutoRange + "\n"

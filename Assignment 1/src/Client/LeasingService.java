@@ -1,6 +1,6 @@
 package Client;
 
-import Vehicules.Vehicule;
+import Vehicles.Vehicle;
 
 public class LeasingService {
     private Lease[] leases;
@@ -12,9 +12,9 @@ public class LeasingService {
     }
 
     // Lease a vehicle to a client
-    public void leaseVehicule(Client client, Vehicule vehicule, String leaseDate, String returnDate) {
-        if (isVehiculeLeased(vehicule)) {
-            System.out.println("Error: Vehicle " + vehicule.getPlateNumber() + " is already leased.");
+    public void leaseVehicule(Client client, Vehicle vehicle, String leaseDate, String returnDate) {
+        if (isVehiculeLeased(vehicle)) {
+            System.out.println("Error: Vehicle " + vehicle.getPlateNumber() + " is already leased.");
             return;
         }
 
@@ -23,15 +23,15 @@ public class LeasingService {
             return;
         }
 
-        leases[leaseCount] = new Lease(client, vehicule, leaseDate, returnDate);
+        leases[leaseCount] = new Lease(client, vehicle, leaseDate, returnDate);
         leaseCount++;
-        System.out.println("Vehicule " + vehicule.getPlateNumber() + " leased to " + client.getName());
+        System.out.println("Vehicule " + vehicle.getPlateNumber() + " leased to " + client.getName());
     }
 
     // Return a leased vehicle
-    public void returnVehicle(Vehicule vehicule) {
+    public void returnVehicle(Vehicle vehicule) {
         for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].getVehicule().equals(vehicule) && leases[i].isActive()) {
+            if (leases[i].getVehicle().equals(vehicule) && leases[i].isActive()) {
                 leases[i].completeLease();
                 System.out.println("Vehicle " + vehicule.getPlateNumber() + " has been returned.");
                 return;
@@ -41,9 +41,9 @@ public class LeasingService {
     }
 
     // Check if a vehicle is currently leased
-    public boolean isVehiculeLeased(Vehicule vehicule) {
+    public boolean isVehiculeLeased(Vehicle vehicule) {
         for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].getVehicule().equals(vehicule) && leases[i].isActive()) {
+            if (leases[i].getVehicle().equals(vehicule) && leases[i].isActive()) {
                 return true;
             }
         }
