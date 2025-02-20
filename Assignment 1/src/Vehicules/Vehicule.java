@@ -10,7 +10,11 @@ public class Vehicule {
     
     
     public Vehicule(){
+<<<<<<< HEAD
         this.make = "None";
+=======
+        this.make = "No make";
+>>>>>>> a65f268419de57caf14803fea5a60ced3ccab489
         this.model = "No model";
         this.year = 0;
     }
