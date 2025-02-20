@@ -13,7 +13,6 @@ public class Driver {
         // Array containing all the clients
         Client[] client_Arr = new Client[0];
 
-
         // Arrays that contain vehicles. One array for each type
         Electric_Truck[] electricTruck_Arr = new Electric_Truck[0];
         Diesel_Truck[] dieselTrucks_Arr = new Diesel_Truck[0];
@@ -21,7 +20,7 @@ public class Driver {
         Gasoline_Car[] gasolineCars_Arr = new Gasoline_Car[0];
 
         // The array that stores all client-vehicle relations
-        String[] clientVehicle_Arr = new String[0];
+        String[] clientVehicleRelation = new String[0];
         
         
         boolean app = true;
@@ -35,21 +34,27 @@ public class Driver {
         double maxWeight;
         double fuelTankCapacity;
 
+        int indexElectricTruck = 0;
+        int indexDieselTruck = 0;
+        int indexElectricCar = 0;
+        int indexGasolineCar = 0;
+
+
         while (app) {
-            System.out.println("What would you like to do? \n"
+            System.out.println("What would you like to do? \n\n"
             + "11- Add vehicle \n"
             + "12- Delete vehicle \n"
             + "13- Update vehicle information \n"
-            + "14- List all vehicles by category\n"
+            + "14- List all vehicles by category\n\n"
 
             + "21- Add client \n"
             + "22- Edit client \n"
-            + "23- Delete client \n"
+            + "23- Delete client \n\n"
 
             + "31- Lease vehicle to client \n"
             + "32- Return vehicle from a client \n"
             + "33- Show all vehicles leased by a client \n"
-            + "34- Show all leased vehicles (by all clients) \n"
+            + "34- Show all leased vehicles (by all clients) \n\n"
 
             + "41- Display the truck with the largest capacity \n"
             + "42- Create a copy of the electric trucks array (see below) \n"
@@ -59,7 +64,7 @@ public class Driver {
             choice = sc.nextInt();
 
             switch (choice) {
-                case 1:
+                case 11:
                     
                     System.out.println("Which type of vehicle would you like to add? \n"
                     + "1. Electric truck \n"
@@ -71,6 +76,8 @@ public class Driver {
 
                     switch (vehicleTypeChoice) {
                         case 1:
+                        indexElectricTruck++;
+
                         System.out.println("What is the make (company) of the electric truck: ");
                         make = sc.next();
                         System.out.println("What is the model of the electric truck: ");
@@ -109,7 +116,7 @@ public class Driver {
                         fuelTankCapacity = sc.nextDouble();
                         System.out.println("What is the maximum weight capacity (in kg) of the diesel truck: ");
                         maxWeight = sc.nextDouble();
-                          
+                        
                         Diesel_Truck dTruck1 = new Diesel_Truck(make,model,year,maxWeight,fuelTankCapacity);
 
                         case 4:
@@ -133,7 +140,7 @@ public class Driver {
 
                     break;
 
-                case 2:
+                case 12:
                     break;
 
 
