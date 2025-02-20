@@ -39,4 +39,10 @@ public class Electric_Car extends Vehicule {
     public double getMaxPasenger(){return this.maxPassenger;}
 
     public double getMaxAutoRange(){return this.maxAutoRange;}
+
+    public String toString(){
+        return super.toString() + "\n"
+        + "Max truck range: " + maxAutoRange + "\n"
+        + "Max number of passenger: " + maxPassenger + "\n";
+    }
 }

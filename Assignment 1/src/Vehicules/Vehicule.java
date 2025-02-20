@@ -10,11 +10,7 @@ public class Vehicule {
     
     
     public Vehicule(){
-<<<<<<< HEAD
-        this.make = "None";
-=======
         this.make = "No make";
->>>>>>> a65f268419de57caf14803fea5a60ced3ccab489
         this.model = "No model";
         this.year = 0;
     }
@@ -38,6 +34,14 @@ public class Vehicule {
     public String getModel(){return this.model;}
 
     public int getYear(){return this.year;}
+
+
+    public String toString(){
+        return "Make: " + this.make + "\n" 
+        + "Model: " + this.model + "\n"
+        + "Year: " + this.year + "\n"
+        + "Plate Number: " + this.plateNumber;
+    }
 
 }
 

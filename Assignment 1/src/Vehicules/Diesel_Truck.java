@@ -38,6 +38,11 @@ public class Diesel_Truck extends Vehicule {
 
     public double getFuelTankCapacity(){return this.fuelTankCapacity;}
 
+    public String toString(){
+        return super.toString() + "\n"
+        + "Max fuel tank capacity: " + fuelTankCapacity + " L\n"
+        + "Max weight: " + maxWeight + "\n";
+    }
 
 }
 

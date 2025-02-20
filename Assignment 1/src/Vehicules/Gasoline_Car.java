@@ -33,6 +33,9 @@ public class Gasoline_Car extends Vehicule{
 
     public double getMaxPasenger(){return this.maxPassenger;}
 
-
+    public String toString(){
+        return super.toString() + "\n"
+        + "Max number of passenger: " + maxPassenger + "\n";
+    }
     
 }
