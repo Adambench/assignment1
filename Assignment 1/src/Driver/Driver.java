@@ -12,12 +12,25 @@ public class Driver {
 
         // Array containing all the clients
         Client[] client_Arr = new Client[0];
+        Vehicle[][] vehicles = new Vehicle[4][];
 
-        // Arrays that contain vehicles. One array for each type
-        Electric_Truck[] electricTruck_Arr = new Electric_Truck[0];
-        Diesel_Truck[] dieselTrucks_Arr = new Diesel_Truck[0];
-        Electric_Car[] electricCars_Arr = new Electric_Car[0];
-        Gasoline_Car[] gasolineCars_Arr = new Gasoline_Car[0];
+        vehicles[0] = new Electric_Truck[0];
+        vehicles[1] = new Electric_Car[0];
+        vehicles[2] = new Diesel_Truck[0];
+        vehicles[3] = new Gasoline_Car[0];
+
+
+
+        /*
+         * Index of every type of vehicle: 
+         * 0 - Electric truck
+         * 1 - Electric car
+         * 2 - Diesel truck
+         * 3 - Gasoline car
+         */
+
+
+    
         Vehicle[] tempArr = new Vehicle[1];        
         
         boolean app = true;
@@ -30,6 +43,7 @@ public class Driver {
         int maxPassenger;
         double maxWeight;
         double fuelTankCapacity;
+        String plateNumber;
 
 
         while (app) {
@@ -52,7 +66,7 @@ public class Driver {
             + "42- Create a copy of the electric trucks array (see below) \n"
             );
             
-            System.out.println("Select choice :");
+            System.out.print("Select choice :");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -80,31 +94,16 @@ public class Driver {
                         maxAutoRange = sc.nextDouble();
                         System.out.println("What is the maximum weight capacity (in kg) of the electric truck: ");
                         maxWeight = sc.nextDouble();
-                        
 
-                        if (electricTruck_Arr.length != 0){
-                            // Copy current array into temporary array
-                            tempArr = new Vehicle[electricTruck_Arr.length];
-                            for(int i =0; i<electricTruck_Arr.length;i++){
-                                tempArr[i] = new Electric_Truck(electricTruck_Arr[i]) ;
-                            }
-                                
-                            // Modify length of Electrick Truck array
-                            electricTruck_Arr = new Electric_Truck[tempArr.length + 1];
-
-                            // Copy over all the objects in the temporary array back into the Electric Truck array
-                            for(int i =0; i<tempArr.length ;i++){
-                                electricTruck_Arr[i] = new Electric_Truck((Electric_Truck) tempArr[i]);
-                            }
-                        } else{
-                            electricTruck_Arr = new Electric_Truck[1];
-                        }
+                        // (Vehicle[][] vehicles, Vehicle[] tempArr, int arrayIndex){
+                        // adds one more place at the end of the array 
+                        vehicles = addVehicle(vehicles, tempArr, vehicleTypeChoice);
 
                         // Add the newly added Electric Truck
-                        electricTruck_Arr[electricTruck_Arr.length -1] = new Electric_Truck(make, model, year, maxAutoRange, maxWeight);
+                        vehicles[0][vehicles[0].length -1] = new Electric_Truck(make, model, year, maxAutoRange, maxWeight);
 
                         System.out.println("The following Electric Truck was just added: \n" 
-                                            +electricTruck_Arr[electricTruck_Arr.length -1] + "\n");
+                                            +vehicles[0][vehicles[0].length -1] + "\n");
                         break;
 
                         case 2:
@@ -119,32 +118,17 @@ public class Driver {
                         maxAutoRange = sc.nextDouble();
                         System.out.println("What is the maximum number of passenger of the electric car: ");
                         maxPassenger = sc.nextInt();
-                          
- 
-                        if (electricCars_Arr.length != 0){
-                            // Copy current array into temporary array
-                            tempArr = new Vehicle[electricCars_Arr.length];
-                            for(int i =0; i<electricCars_Arr.length;i++){
-                                tempArr[i] = new Electric_Car(electricCars_Arr[i]) ;
-                            }
-                                
-                            // Modify length of Electrick Truck array
-                            electricCars_Arr = new Electric_Car[tempArr.length + 1];
-
-                            // Copy over all the objects in the temporary array back into the Electric Truck array
-                            for(int i =0; i<tempArr.length ;i++){
-                                electricCars_Arr[i] = new Electric_Car((Electric_Car) tempArr[i]);
-                            }
-                        } else{
-                            electricCars_Arr = new Electric_Car[1];
-                        }
+                        
+                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
 
                         // Add the newly added Electric Car
-                        electricCars_Arr[electricCars_Arr.length -1] = new Electric_Car(make, model, year, maxAutoRange, maxPassenger);
+                        vehicles[1][vehicles[1].length -1] = new Electric_Car(make, model, year, maxAutoRange, maxPassenger);
 
                         System.out.println("The following Electric Car was just added: \n" 
-                                            +electricCars_Arr[electricCars_Arr.length -1] + "\n");
+                                            +vehicles[1][vehicles[1].length -1] + "\n");
+                        
                         break;
+
 
                         case 3:
                         sc.nextLine();
@@ -160,29 +144,14 @@ public class Driver {
                         maxWeight = sc.nextDouble();
                         
                         
-                        if (dieselTrucks_Arr.length !=0){
-                            // Copy current array into temporary array
-                            tempArr = new Diesel_Truck[dieselTrucks_Arr.length];
-                            for(int i =0; i<dieselTrucks_Arr.length;i++){
-                                tempArr[i] = new Diesel_Truck(dieselTrucks_Arr[i]) ;
-                            }
+                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
 
-                            // Modify length of Diesel Truck array
-                            dieselTrucks_Arr = new Diesel_Truck[tempArr.length + 1];
+                        // Add the newly added Electric Car
+                        vehicles[2][vehicles[2].length -1] = new Diesel_Truck(make, model, year, fuelTankCapacity, maxWeight);
 
-                            // Copy over all the objects in the temporary array back into the Diesel Truck array
-                            for(int i =0; i<tempArr.length;i++){
-                                dieselTrucks_Arr[i] = new Diesel_Truck((Diesel_Truck) tempArr[i]);
-                            }
-                        } else{
-                            dieselTrucks_Arr = new Diesel_Truck[1];
-                        }
-
-                        // Add the newly added Diesel Truck
-                        dieselTrucks_Arr[dieselTrucks_Arr.length -1] = new Diesel_Truck(make, model, year, maxWeight, fuelTankCapacity);
-
-                        System.out.println("The following Diesel Truck was just added: \n" 
-                                            +dieselTrucks_Arr[dieselTrucks_Arr.length -1] + "\n");
+                        System.out.println("------------------------------------------------\n"
+                                            +"The following Diesel Truck was just added: \n" 
+                                            +vehicles[2][vehicles[2].length -1] + "\n");
                         break;
 
                         case 4:
@@ -195,41 +164,28 @@ public class Driver {
                         year = sc.nextInt();
                         System.out.println("What is the maximum number of passenger of the gasoline car: ");
                         maxPassenger = sc.nextInt();
-                                                                                        
-                        if (gasolineCars_Arr.length !=0){
-                            // Copy current array into temporary array
-                            tempArr = new Gasoline_Car[gasolineCars_Arr.length];
-                            for(int i =0; i<gasolineCars_Arr.length;i++){
-                                tempArr[i] = new Gasoline_Car( (Gasoline_Car) gasolineCars_Arr[i]) ;
-                            }
 
-                            // Modify length of Diesel Truck array
-                            gasolineCars_Arr = new Gasoline_Car[tempArr.length + 1];
-
-                            // Copy over all the objects in the temporary array back into the Diesel Truck array
-                            for(int i =0; i<tempArr.length;i++){
-                                gasolineCars_Arr[i] = new Gasoline_Car((Gasoline_Car) tempArr[i]);
-                            }
-                        } else{
-                            gasolineCars_Arr = new Gasoline_Car[1];
-                        }
+                                               
+                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
 
                         // Add the newly added Gasoline Car
-                        gasolineCars_Arr[gasolineCars_Arr.length -1] = new Gasoline_Car(make, model, year, maxPassenger);
+                        vehicles[3][vehicles[3].length -1] = new Gasoline_Car(make, model, year, maxPassenger);
 
                         System.out.println("The following Gasoline Car was just added: \n" 
-                                            +gasolineCars_Arr[gasolineCars_Arr.length -1] + "\n");
+                                            +vehicles[3][vehicles[3].length -1] + "\n");
 
                         break;
                         
-                        default:
-                        
-                        break;
                     }
 
                     break;
 
                 case 12:
+                    System.out.println("Enter the plate number of the vehicle you would like to delete: ");
+                    plateNumber = sc.nextLine();
+                    if(plateNumber.substring(0, 1).equals("DT")){
+
+                    }
                     break;
 
                 case 13:
@@ -284,6 +240,73 @@ public class Driver {
 
 
 
+    // Adds one more place to the array vehicles array
+    public static Vehicle[][] addVehicle(Vehicle[][] vehicles, Vehicle[] tempArr, int arrayIndex){
+        arrayIndex--;
 
+        if (vehicles[arrayIndex].length != 0){
+
+           // Copy current array into temporary array
+            tempArr = new Vehicle[vehicles[arrayIndex].length];
+
+            for(int i =0; i<vehicles[arrayIndex].length;i++){
+                tempArr[i] = getVehicle(arrayIndex, vehicles[arrayIndex][i]);
+            }                   
+            // Modify length of the array
+            vehicles[arrayIndex] = getCorrectArray(arrayIndex, tempArr.length + 1);
+            
+            // Copy over all the objects in the temporary array back into the Electric Truck array
+            for(int i =0; i<tempArr.length ;i++){
+                vehicles[arrayIndex][i] = getVehicle(arrayIndex, tempArr[i]);
+            }
+            
+        } else{
+            vehicles[arrayIndex] = getCorrectArray(arrayIndex, 1);
+        }
+        return vehicles;
+    }
+    
+
+    public static Vehicle getVehicle(int arrayIndex, Vehicle vehicle){
+        // Returns a vehicle of the correct type
+
+        switch (arrayIndex) {
+            case 0:
+                return new Electric_Truck((Electric_Truck) vehicle);
+
+            case 1:
+                return new Electric_Car((Electric_Car) vehicle);
+
+            case 2:
+                return new Diesel_Truck((Diesel_Truck) vehicle);
+
+            case 3: 
+                return new Gasoline_Car((Gasoline_Car) vehicle);
+
+            default:// Adding this default because I kept having an error for nothing "MuSt rEturN vEHiclE 🥸" :\
+                return new Vehicle();
+        }
+        
+    }
+
+    // Used to modify length of array. Just returns the correct type of array with the length inputted
+    public static Vehicle[] getCorrectArray(int arrayIndex, int length){
+        switch (arrayIndex) {
+            case 0:
+                return new Electric_Truck[length];
+
+            case 1:
+                return new Electric_Car[length];
+
+            case 2:
+                return new Diesel_Truck[length];
+
+            case 3: 
+                return new Gasoline_Car[length];
+
+            default:// Adding this default because I kept having an error for nothing "MuSt rEturN vEHiclE 🥸" :\
+                return new Vehicle[0];
+        }
+    }
 
 }
