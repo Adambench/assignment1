@@ -40,11 +40,16 @@ public class Vehicle {
         return "Make: " + this.make + "\n" 
         + "Model: " + this.model + "\n"
         + "Year: " + this.year + "\n"
-        + "Plate Number: " + this.plateNumber;
+        + "Plate Number: " + this.plateNumber + "\n";
     }
 
 
     public boolean equals(Vehicle vehicle){
+        if (this.plateNumber == vehicle.plateNumber){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 

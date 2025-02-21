@@ -29,9 +29,7 @@ public class Diesel_Truck extends Vehicle {
         super(truck.make, truck.model, truck.year);
         this.maxWeight = truck.maxWeight;
         this.fuelTankCapacity =  truck.fuelTankCapacity;
-
-        vehiculeNumber++;
-        this.plateNumber = "DT" + vehiculeNumber;
+        this.plateNumber = truck.plateNumber;
     }
 
     public double getMaxWeight(){return this.maxWeight;}

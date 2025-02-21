@@ -4,46 +4,52 @@ import Vehicles.Vehicle;
 
 public class LeasingService {
     private Lease[] leases;
-    private int leaseCount;
+    private Lease[] temp;
 
     public LeasingService(int maxLeases) {
-        this.leases = new Lease[maxLeases];
-        this.leaseCount = 0;
+        this.leases = new Lease[0];
     }
 
     // Lease a vehicle to a client
-    public void leaseVehicule(Client client, Vehicle vehicle, String leaseDate, String returnDate) {
-        if (isVehiculeLeased(vehicle)) {
+    public void leaseVehicle(Client client, Vehicle vehicle, String leaseDate, String returnDate) {
+        if (isVehicleLeased(vehicle)) {
             System.out.println("Error: Vehicle " + vehicle.getPlateNumber() + " is already leased.");
             return;
         }
 
-        if (leaseCount >= leases.length) {
-            System.out.println("Error: Maximum number of leases reached.");
-            return;
+        // copy all leases into temporary array
+        for (int i =0; i< leases.length; i++){
+            temp[i] = new Lease(leases[i]);
         }
 
-        leases[leaseCount] = new Lease(client, vehicle, leaseDate, returnDate);
-        leaseCount++;
-        System.out.println("Vehicule " + vehicle.getPlateNumber() + " leased to " + client.getName());
+        // add a place in the lease array
+        leases = new Lease[temp.length + 1];
+
+        // Copy back all the leases from the temp into the leases array
+        for (int i = 0; i<temp.length; i++){
+            leases[i] = new Lease(temp[i]);
+        }
+
+        leases[leases.length - 1] = new Lease(client, vehicle, leaseDate, returnDate);
+        System.out.println("Vehicle " + vehicle.getPlateNumber() + " leased to " + client.getName());
     }
 
     // Return a leased vehicle
-    public void returnVehicle(Vehicle vehicule) {
-        for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].getVehicle().equals(vehicule) && leases[i].isActive()) {
+    public void returnVehicle(Vehicle vehicle) {
+        for (int i = 0; i < leases.length; i++) {
+            if (leases[i].getVehicle().getPlateNumber().equals(vehicle.getPlateNumber()) && leases[i].getIsActive()) {
                 leases[i].completeLease();
-                System.out.println("Vehicle " + vehicule.getPlateNumber() + " has been returned.");
+                System.out.println("Vehicle " + vehicle.getPlateNumber() + " has been returned.");
                 return;
             }
         }
-        System.out.println("Error: Vehicle " + vehicule.getPlateNumber() + " was not leased or has already been returned.");
+        System.out.println("Error: Vehicle " + vehicle.getPlateNumber() + " was not leased or has already been returned.");
     }
 
     // Check if a vehicle is currently leased
-    public boolean isVehiculeLeased(Vehicle vehicule) {
-        for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].getVehicle().equals(vehicule) && leases[i].isActive()) {
+    public boolean isVehicleLeased(Vehicle vehicle) {
+        for (int i = 0; i < leases.length; i++) {
+            if (leases[i].getVehicle().equals(vehicle) && leases[i].getIsActive()) {
                 return true;
             }
         }
@@ -51,20 +57,20 @@ public class LeasingService {
     }
 
     // Show all vehicles leased by a specific client
-    public void showLeasedVehiculesByClient(Client client) {
-        System.out.println("Leased vehicules for client: " + client.getName());
-        for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].getClient().equals(client) && leases[i].isActive()) {
+    public void showLeasedVehiclesByClient(Client client) {
+        System.out.println("Leased vehicles for client: " + client.getName());
+        for (int i = 0; i < leases.length; i++) {
+            if (leases[i].getClient().equals(client) && leases[i].getIsActive()) {
                 System.out.println(leases[i]);
             }
         }
     }
 
     // Show all active leases
-    public void showAllLeasedVehicules() {
-        System.out.println("All currently leased vehicules:");
-        for (int i = 0; i < leaseCount; i++) {
-            if (leases[i].isActive()) {
+    public void showAllLeasedVehicles() {
+        System.out.println("All currently leased vehicles:");
+        for (int i = 0; i < leases.length; i++) {
+            if (leases[i].getIsActive()) {
                 System.out.println(leases[i]);
             }
         }

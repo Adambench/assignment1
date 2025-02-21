@@ -29,9 +29,7 @@ public class Electric_Truck extends Vehicle {
         super(truck.make, truck.model, truck.year);
         this.maxAutoRange = truck.maxAutoRange;
         this.maxWeight =  truck.maxWeight;
-
-        vehiculeNumber++;
-        this.plateNumber = "ET" + vehiculeNumber;
+        this.plateNumber = truck.plateNumber;
     }
     
 

@@ -29,9 +29,7 @@ public class Electric_Car extends Vehicle {
         super(car.make, car.model, car.year);
         this.maxAutoRange = car.maxAutoRange;
         this.maxPassenger = car.maxPassenger;
-
-        vehiculeNumber++;
-        this.plateNumber = "EC" + vehiculeNumber;
+        this.plateNumber = car.plateNumber;
     }
 
     

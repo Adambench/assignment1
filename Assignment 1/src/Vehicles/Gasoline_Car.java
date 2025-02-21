@@ -26,9 +26,7 @@ public class Gasoline_Car extends Vehicle{
     public Gasoline_Car(Gasoline_Car car){
         super(car.make, car.model, car.year);
         this.maxPassenger = car.maxPassenger;
-
-        vehiculeNumber++;
-        this.plateNumber = "GC" + vehiculeNumber;
+        this.plateNumber = car.plateNumber;
     }
 
     public double getMaxPasenger(){return this.maxPassenger;}
