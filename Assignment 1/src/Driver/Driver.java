@@ -29,9 +29,6 @@ public class Driver {
          * 3 - Gasoline car
          */
 
-
-    
-        Vehicle[] tempArr = new Vehicle[1];        
         
         boolean app = true;
         int choice;
@@ -48,6 +45,8 @@ public class Driver {
 
         while (app) {
             System.out.println("What would you like to do? \n\n"
+            + "0 - Leave \n\n"
+
             + "11- Add vehicle \n"
             + "12- Delete vehicle \n"
             + "13- Update vehicle information \n"
@@ -95,9 +94,8 @@ public class Driver {
                         System.out.println("What is the maximum weight capacity (in kg) of the electric truck: ");
                         maxWeight = sc.nextDouble();
 
-                        // (Vehicle[][] vehicles, Vehicle[] tempArr, int arrayIndex){
                         // adds one more place at the end of the array 
-                        vehicles = addVehicle(vehicles, tempArr, vehicleTypeChoice);
+                        vehicles = addVehicle(vehicles, vehicleTypeChoice);
 
                         // Add the newly added Electric Truck
                         vehicles[0][vehicles[0].length -1] = new Electric_Truck(make, model, year, maxAutoRange, maxWeight);
@@ -119,7 +117,7 @@ public class Driver {
                         System.out.println("What is the maximum number of passenger of the electric car: ");
                         maxPassenger = sc.nextInt();
                         
-                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
+                        vehicles = (addVehicle(vehicles, vehicleTypeChoice));
 
                         // Add the newly added Electric Car
                         vehicles[1][vehicles[1].length -1] = new Electric_Car(make, model, year, maxAutoRange, maxPassenger);
@@ -144,12 +142,12 @@ public class Driver {
                         maxWeight = sc.nextDouble();
                         
                         
-                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
+                        vehicles = (addVehicle(vehicles, vehicleTypeChoice));
 
                         // Add the newly added Electric Car
                         vehicles[2][vehicles[2].length -1] = new Diesel_Truck(make, model, year, fuelTankCapacity, maxWeight);
 
-                        System.out.println("------------------------------------------------\n"
+                        System.out.println("--------------------------------------------------\n"
                                             +"The following Diesel Truck was just added: \n" 
                                             +vehicles[2][vehicles[2].length -1] + "\n");
                         break;
@@ -166,7 +164,7 @@ public class Driver {
                         maxPassenger = sc.nextInt();
 
                                                
-                        vehicles = (addVehicle(vehicles, tempArr, vehicleTypeChoice));
+                        vehicles = (addVehicle(vehicles, vehicleTypeChoice));
 
                         // Add the newly added Gasoline Car
                         vehicles[3][vehicles[3].length -1] = new Gasoline_Car(make, model, year, maxPassenger);
@@ -183,12 +181,14 @@ public class Driver {
                 case 12:
                     System.out.println("Enter the plate number of the vehicle you would like to delete: ");
                     plateNumber = sc.nextLine();
-                    if(plateNumber.substring(0, 1).equals("DT")){
-
-                    }
+                    vehicles = removeVehicle(vehicles, plateNumber);
                     break;
 
                 case 13:
+                    System.out.println("Which vehicle would you like to update? (input plate number)");
+                    plateNumber = sc.next();
+
+
                     break;
 
                 case 14:
@@ -217,6 +217,14 @@ public class Driver {
 
                 case 34:
                     break;  
+                
+                
+                
+                case 41:
+                    break;
+
+                case 42:
+                    break;  
 
                 case 0:
                     app = false;
@@ -241,29 +249,96 @@ public class Driver {
 
 
     // Adds one more place to the array vehicles array
-    public static Vehicle[][] addVehicle(Vehicle[][] vehicles, Vehicle[] tempArr, int arrayIndex){
+    public static Vehicle[][] addVehicle(Vehicle[][] vehicles, int arrayIndex){
         arrayIndex--;
 
         if (vehicles[arrayIndex].length != 0){
 
            // Copy current array into temporary array
-            tempArr = new Vehicle[vehicles[arrayIndex].length];
+            Vehicle[] resultingArray = new Vehicle[vehicles[arrayIndex].length];
 
             for(int i =0; i<vehicles[arrayIndex].length;i++){
-                tempArr[i] = getVehicle(arrayIndex, vehicles[arrayIndex][i]);
+                resultingArray[i] = getVehicle(arrayIndex, vehicles[arrayIndex][i]);
             }                   
             // Modify length of the array
-            vehicles[arrayIndex] = getCorrectArray(arrayIndex, tempArr.length + 1);
+            vehicles[arrayIndex] = getCorrectArray(arrayIndex, resultingArray.length + 1);
             
             // Copy over all the objects in the temporary array back into the Electric Truck array
-            for(int i =0; i<tempArr.length ;i++){
-                vehicles[arrayIndex][i] = getVehicle(arrayIndex, tempArr[i]);
+            for(int i =0; i<resultingArray.length ;i++){
+                vehicles[arrayIndex][i] = getVehicle(arrayIndex, resultingArray[i]);
             }
             
         } else{
             vehicles[arrayIndex] = getCorrectArray(arrayIndex, 1);
         }
         return vehicles;
+    }
+
+
+    public static Vehicle[][] removeVehicle(Vehicle[][] vehicles, String plateNumber){
+        int indexOfArray = 0;
+        int indexOfVehicle = 0;
+        boolean vehicleFound = false;
+
+        // Create a 2D Result Array and initialize it
+        Vehicle[][] resultingArray = new Vehicle[4][];
+
+        resultingArray[0] = new Electric_Truck[vehicles[0].length];
+        resultingArray[1] = new Electric_Car[vehicles[0].length];
+        resultingArray[2] = new Diesel_Truck[vehicles[0].length];
+        resultingArray[3] = new Gasoline_Car[vehicles[0].length];
+
+
+        // Get the index of the vehicle with the plate number to delete
+        for (int i = 0; i<4; i++ ){
+            for(int j =0; j<vehicles[i].length; j++){
+                if(vehicles[i][j].getPlateNumber().equals(plateNumber)){
+                    indexOfArray = i;
+                    indexOfVehicle = j;
+                    vehicleFound = true;
+                    break;
+                }
+            }
+        }
+
+        // If we find the vehicle to delete, then copy everything into the result array except that vehicle
+        if (vehicleFound){
+
+            vehicles[indexOfArray][indexOfVehicle] = null;
+            resultingArray[indexOfArray] = getCorrectArray(indexOfArray, vehicles[indexOfArray].length -1);
+
+            // Copy all the vehicles from the vehicles array into the result array
+            for (int i = 0; i < 4; i++){
+                for (int j = 0; j<resultingArray[i].length; j++){
+                    if (vehicles[i][j] != null){
+                        resultingArray[i][j] = getVehicle(i, vehicles[i][j]);
+                    }
+                }
+            }
+            /*
+             * By default, when copying from the vehicles array to the result array, the last element of the array
+             * of whichever type of vehicle we are trying to delete will not get copied. If we are trying to delete an 
+             * element that is not the last element of the array, then the last element of the array will not get copied 
+             * and two elements will be removed. There will also be an empty element in the resulting array.
+             * 
+             * Therefore the following line takes in the last element of the array in which we are trying to delete an element
+             * and copies it into the empty slot of the resulting array. That way, no additional element is lost besides the 
+             * element we are trying to delete
+             * 
+             * This line runs only if the element we are trying to delete is NOT in the last place of it's subarray
+             */
+
+            if(resultingArray[indexOfArray].length != indexOfVehicle){ 
+                // This line gets run if the vehicle we want to remove is not the last element of it's array
+                resultingArray[indexOfArray][indexOfVehicle] = getVehicle(indexOfArray, vehicles[indexOfArray][vehicles[indexOfArray].length-1]);
+            }
+            return resultingArray;
+
+        } else {
+            System.out.println("Error : plate number inexistant. Plate number :" + plateNumber);
+            return vehicles;
+        }
+
     }
     
 
@@ -288,6 +363,7 @@ public class Driver {
         }
         
     }
+
 
     // Used to modify length of array. Just returns the correct type of array with the length inputted
     public static Vehicle[] getCorrectArray(int arrayIndex, int length){
