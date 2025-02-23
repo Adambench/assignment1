@@ -367,10 +367,12 @@ public class Driver {
                 for (int i=0; i < vehicles[2].length;i++ ){
                     if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
                 }
+                // Yo btw t'a pas besoin d'ecrire .toString() cette methode va etre called by defaut quand tu le mets
+                // dans un system.out.print() function
                 if (vehicles[0][j].getMaxWeight()>vehicles[0][k].getMaxWeight()) {
-                    System.out.println("The truck with the largest capacity is: " + vehicles[0][j]);
+                    System.out.println("The truck with the largest capacity is: " + vehicles[0][j].toString());
                 } else {
-                    System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
+                    System.out.println("The truck with the largest capacity is: " + vehicles[2][k].toString());
                 } 
                 
                     break; 
