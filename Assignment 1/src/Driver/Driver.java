@@ -226,6 +226,26 @@ public class Driver {
                 case 42:
                     break;  
 
+                case 41:
+
+                int j=0;
+                int k=0;
+                 for (int i=0; i < electricTruck_Arr.length;i++ ){
+                    if (electricTruck_Arr[i].getMaxWeight() > electricTruck_Arr[j].getMaxWeight()) j=i;
+                 }
+                 for (int i=0; i < dieselTrucks_Arr.length;i++ ){
+                    if (dieselTrucks_Arr[i].getMaxWeight() > dieselTrucks_Arr[k].getMaxWeight()) k=i;
+                 }
+                 if (electricTruck_Arr[j].getMaxWeight()>dieselTrucks_Arr[k].getMaxWeight()) {
+                    System.out.println("The truck with the largest capacity is: " + electricTruck_Arr[j].toString());
+                }
+                else  
+                System.out.println("The truck with the largest capacity is: " + dieselTrucks_Arr[k].toString());
+                
+                    break; 
+
+                case 42:
+                    break; 
                 case 0:
                     app = false;
                     break;
