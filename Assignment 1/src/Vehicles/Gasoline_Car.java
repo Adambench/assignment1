@@ -29,7 +29,13 @@ public class Gasoline_Car extends Vehicle{
         this.plateNumber = car.plateNumber;
     }
 
+    // Getter
+    @Override
     public double getMaxPasenger(){return this.maxPassenger;}
+
+    // Setter
+    @Override
+    public void setMaxPassenger(int maxPassenger){this.maxPassenger = maxPassenger;}
 
     @Override
     public String toString(){

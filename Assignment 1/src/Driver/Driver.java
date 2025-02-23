@@ -1,6 +1,7 @@
 package Driver;
 import java.util.Scanner;
 
+
 import Client.*;
 import Vehicles.*;
 
@@ -18,7 +19,6 @@ public class Driver {
         vehicles[1] = new Electric_Car[0];
         vehicles[2] = new Diesel_Truck[0];
         vehicles[3] = new Gasoline_Car[0];
-
 
 
         /*
@@ -42,6 +42,10 @@ public class Driver {
         double fuelTankCapacity;
         String plateNumber;
 
+        String clientName;
+        String clientId;
+        int clientIndex;
+        boolean clientFound;
 
         while (app) {
             System.out.println("What would you like to do? \n\n"
@@ -144,7 +148,7 @@ public class Driver {
                         
                         vehicles = (addVehicle(vehicles, vehicleTypeChoice));
 
-                        // Add the newly added Electric Car
+                        // Add the newly added Diesel truck
                         vehicles[2][vehicles[2].length -1] = new Diesel_Truck(make, model, year, fuelTankCapacity, maxWeight);
 
                         System.out.println("--------------------------------------------------\n"
@@ -185,23 +189,157 @@ public class Driver {
                     break;
 
                 case 13:
+                    int indexOfArray = 0;
+                    int indexOfVehicle = 0;
+                    sc.nextLine();
                     System.out.println("Which vehicle would you like to update? (input plate number)");
                     plateNumber = sc.next();
 
+                    // Get the index of the vehicle with the plate number to modify
+                    for (int i = 0; i<4; i++ ){
+                        for(int j =0; j<vehicles[i].length; j++){
+                            if(vehicles[i][j].getPlateNumber().equals(plateNumber)){
+                                indexOfArray = i;
+                                indexOfVehicle = j;
+                                break;
+                            }
+                        }
+                    }
+
+                    System.out.println("You will now have to input the changes you want to apply to this vehicle:");
+                    System.out.println("What is the make (company) of the vehicle: ");
+                    make = sc.nextLine();
+                    System.out.println("What is the model of the vehicle: ");
+                    model = sc.nextLine();
+                    System.out.println("What is the year of the vehicle: ");
+                    year = sc.nextInt();
+
+                    vehicles[indexOfArray][indexOfVehicle].setMake(make);
+                    vehicles[indexOfArray][indexOfVehicle].setModel(model);;
+                    vehicles[indexOfArray][indexOfVehicle].setYear(year);
+
+                    switch (indexOfArray) {
+                        case 0:
+                            System.out.print("Input max auto range : ");
+                            maxAutoRange = sc.nextDouble();
+                            
+                            System.out.print("\nInput max weight : ");
+                            maxWeight = sc.nextDouble();
+
+                            vehicles[0][indexOfVehicle].setMaxAutoRange(maxAutoRange);
+                            vehicles[0][indexOfVehicle].setMaxWeight(maxWeight);
+                            break;
+
+                        case 1:
+                            System.out.print("Input max number of passenger : ");
+                            maxPassenger = sc.nextInt();
+
+                            System.out.println("\nInput max auto range : ");
+                            maxAutoRange = sc.nextDouble();
+
+                            vehicles[1][indexOfVehicle].setMaxPassenger(maxPassenger);
+                            vehicles[1][indexOfVehicle].setMaxAutoRange(maxAutoRange);
+                            break;
+
+                        case 2:
+                            System.out.print("Input max weight : ");
+                            maxWeight = sc.nextDouble();
+
+                            System.out.print("\nInput fuel tank capacity : ");
+                            fuelTankCapacity = sc.nextDouble();
+
+                            vehicles[2][indexOfVehicle].setMaxWeight(maxWeight);;
+                            vehicles[2][indexOfVehicle].setFuelTankCapacity(fuelTankCapacity);;
+                            break;
+
+                        case 3:
+                            System.out.print("Input max number of passengers : ");
+                            maxPassenger = sc.nextInt();
+
+                            vehicles[3][indexOfVehicle].setMaxPassenger(maxPassenger);;
+                            break;
+                    
+
+                    }
+
+                    System.out.println("\n\nHere is the updated vehicle: \n"
+                                    + vehicles[indexOfArray][indexOfVehicle]);
 
                     break;
 
+
                 case 14:
+                    for(int i =0; i< 4; i++){
+                        for(int j = 0; j < vehicles[i].length; j++) {
+                            System.out.println(vehicles[i][j]);
+                        }
+                        System.out.println("________________________________________________________");
+                    }
                     break;
 
 
                 case 21:
-                    break;
+                    System.out.println("Input the name of the client you would like to add: ");
+                    clientName = sc.nextLine();
+
+                    // Adds a place in the client array
+                    client_Arr = addClient(client_Arr);
+
+                    client_Arr[client_Arr.length -1] = new Client(clientName);
+
+                    System.out.println("New client added : \n" + client_Arr[client_Arr.length -1]);
+                    break; 
 
                 case 22:
+                    clientIndex = 0;
+                    clientFound = false;
+
+                    System.out.print("Input the id of the client to change : ");
+                    clientId = sc.nextLine();
+
+                    for (int i = 0; i<client_Arr.length; i++){
+                        if (client_Arr[i].getId().equals(clientId)){
+                            clientIndex = i;
+                            break;
+                        }
+                    }
+                    if(clientFound){
+                        System.out.println("Input new name : ");
+                        clientName = sc.nextLine();
+    
+                        client_Arr[clientIndex].setName(clientName);
+
+                        System.out.println("Here is the updated client: \n" + client_Arr[clientIndex]);
+                    } else{
+                        System.out.println("Client not found !");
+                    }
                     break;
 
                 case 23:
+                    if(client_Arr.length != 0){
+                        clientFound = false;
+                        clientIndex = 0;
+
+                        System.out.print("Please input the id of the client to delete : ");
+                        clientId = sc.nextLine();
+    
+                        for (int i = 0; i<client_Arr.length; i++){
+                            if (client_Arr[i].getId().equals(clientId)){
+                                clientIndex = i;
+                                clientFound = true;
+                                break;
+                            }
+                        }
+    
+                        if (clientFound){
+                            client_Arr = removeClient(client_Arr, clientIndex);
+                            System.out.println("Client Successfully deleted!");
+                        } else {
+                            System.out.println("Client not found !");
+                        }
+                    } else {
+                        System.out.println("There are not clients to remove! (yet)");
+                    }
                     break;
 
 
@@ -218,34 +356,28 @@ public class Driver {
                 case 34:
                     break;  
                 
-                
-                
-                case 41:
-                    break;
-
-                case 42:
-                    break;  
-
+            
                 case 41:
 
                 int j=0;
                 int k=0;
-                 for (int i=0; i < electricTruck_Arr.length;i++ ){
-                    if (electricTruck_Arr[i].getMaxWeight() > electricTruck_Arr[j].getMaxWeight()) j=i;
-                 }
-                 for (int i=0; i < dieselTrucks_Arr.length;i++ ){
-                    if (dieselTrucks_Arr[i].getMaxWeight() > dieselTrucks_Arr[k].getMaxWeight()) k=i;
-                 }
-                 if (electricTruck_Arr[j].getMaxWeight()>dieselTrucks_Arr[k].getMaxWeight()) {
-                    System.out.println("The truck with the largest capacity is: " + electricTruck_Arr[j].toString());
+                for (int i=0; i < vehicles[0].length;i++ ){
+                    if (vehicles[0][i].getMaxWeight() > vehicles[0][j].getMaxWeight()) j=i;
                 }
-                else  
-                System.out.println("The truck with the largest capacity is: " + dieselTrucks_Arr[k].toString());
+                for (int i=0; i < vehicles[2].length;i++ ){
+                    if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
+                }
+                if (vehicles[0][j].getMaxWeight()>vehicles[0][k].getMaxWeight()) {
+                    System.out.println("The truck with the largest capacity is: " + vehicles[0][j]);
+                } else {
+                    System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
+                } 
                 
                     break; 
 
                 case 42:
                     break; 
+
                 case 0:
                     app = false;
                     break;
@@ -259,12 +391,48 @@ public class Driver {
             System.out.println("----------------------------------------------------------------------");
         }
 
-        System.out.println("\n\n\n\nThank you for using out app!");
+        System.out.println("\n\n\n\nThank you for using our app!");
 
         sc.close();
     }
 
 
+    // Return a new client array with one more in length
+    public static Client[] addClient(Client[] clientArr){
+        
+        // Create temp array that is one space bigger than client array
+        Client[] temp = new Client[clientArr.length + 1];
+
+        // Copy clients over to temp array
+        for (int i = 0; i< clientArr.length; i++){
+            temp[i] = new Client(clientArr[i]);
+        }
+
+        return temp;
+    }
+
+    public static Client[] removeClient(Client[] client_Arr, int clientIndex){
+        Client [] temp = new Client[client_Arr.length -1];
+    
+        client_Arr[clientIndex] = null;
+
+        // Copy everything into client array except client to delete
+        for (int i = 0; i<temp.length; i++){
+            if(client_Arr[i] != null){
+                temp[i] = new Client(client_Arr[i]);
+            }
+        }
+
+        // If the client to delete is not the last one, copy it (the last client in the array)
+        // into the spot left empty in the temp array
+        if(clientIndex != (client_Arr.length-1)){
+            temp[clientIndex] = client_Arr[client_Arr.length -1];
+        }
+
+        return temp;
+    }
+
+    
 
 
 

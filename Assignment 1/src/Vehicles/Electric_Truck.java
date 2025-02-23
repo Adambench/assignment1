@@ -32,10 +32,20 @@ public class Electric_Truck extends Vehicle {
         this.plateNumber = truck.plateNumber;
     }
     
-
+    // Getters
+    @Override
     public double getMaxWeight(){return this.maxWeight;}
 
+    
+    @Override
     public double getMaxAutoRange(){return this.maxAutoRange;}
+
+    // Setters
+    @Override
+    public void setMaxWeight(double maxWeight){this.maxWeight = maxWeight;}
+
+    @Override
+    public void setMaxAutoRange(double maxAutoRange){this.maxAutoRange = maxAutoRange;}
 
 
     @Override

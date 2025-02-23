@@ -27,6 +27,7 @@ public class Vehicle {
         this.year = vehicule.year;
     }
 
+    // Getters
     public String getPlateNumber(){return this.plateNumber;}
 
     public String getMake(){return this.make;}
@@ -34,6 +35,26 @@ public class Vehicle {
     public String getModel(){return this.model;}
 
     public int getYear(){return this.year;}
+
+
+    // Setters
+    public void setMake(String make) {this.make = make;}
+
+    public void setModel(String model) {this.model = model;}
+
+    public void setYear(int year) {this.year = year;}
+
+    // Declare functions so that they can be overriden in subclass
+    public double getMaxAutoRange(){return 0;}
+    public double getMaxWeight(){return 0;}
+    public double getMaxPasenger(){return 0;}
+    public double getFuelTankCapacity(){return 0;}
+
+
+    public void setMaxAutoRange(double maxAutoRange){}
+    public void setMaxWeight(double maxWeight){}
+    public void setMaxPassenger(int maxPassenger){}
+    public void setFuelTankCapacity(double fuelTankCapacity){}
 
 
     public String toString(){
@@ -52,6 +73,9 @@ public class Vehicle {
         }
 
     }
+
+
+
 
 }
 

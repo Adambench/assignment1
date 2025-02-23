@@ -33,10 +33,20 @@ public class Electric_Car extends Vehicle {
     }
 
     
-    
+    // Getters
+    @Override
     public double getMaxPasenger(){return this.maxPassenger;}
 
+    @Override
     public double getMaxAutoRange(){return this.maxAutoRange;}
+
+    // Setters
+    @Override
+    public void setMaxPassenger(int maxPassenger){this.maxPassenger = maxPassenger;}
+    
+    @Override
+    public void setMaxAutoRange(double maxAutoRange){this.maxAutoRange = maxAutoRange;}
+
 
     @Override
     public String toString(){

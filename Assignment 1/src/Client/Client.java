@@ -18,11 +18,24 @@ public class Client {
         idNumber++;
     }
 
+    public Client(Client client){
+        this.name = client.name;
+        this.id = client.id;
+    }
+
+    // Getters
     public String getId(){return this.id;}
 
     public String getName(){return this.name;}
 
+
+    // Setters
     public void setName(String name){this.name = name;}
 
+
+    public String toString(){
+        return "Name : " + this.name + "\n" 
+            + "Id : " + this.id;
+    }
 
 }

@@ -32,9 +32,19 @@ public class Diesel_Truck extends Vehicle {
         this.plateNumber = truck.plateNumber;
     }
 
+    // Getters
+    @Override
     public double getMaxWeight(){return this.maxWeight;}
-
+    
+    @Override
     public double getFuelTankCapacity(){return this.fuelTankCapacity;}
+
+    //Setters
+    @Override
+    public void setMaxWeight(double maxWeight){this.maxWeight = maxWeight;}
+
+    @Override
+    public void setFuelTankCapacity(double fuelTankCapacity){this.fuelTankCapacity = fuelTankCapacity;}
 
     @Override
     public String toString(){
