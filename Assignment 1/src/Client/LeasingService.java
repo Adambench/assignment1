@@ -6,7 +6,7 @@ public class LeasingService {
     private Lease[] leases;
     private Lease[] temp;
 
-    public LeasingService(int maxLeases) {
+    public LeasingService() {
         this.leases = new Lease[0];
     }
 
