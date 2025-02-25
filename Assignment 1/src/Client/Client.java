@@ -1,7 +1,7 @@
 package Client;
 
 public class Client {
-    private String id;
+    private final String id;
     private String name;
     private static int idNumber = 1000;
 
@@ -32,7 +32,7 @@ public class Client {
     // Setters
     public void setName(String name){this.name = name;}
 
-
+    @Override
     public String toString(){
         return "Name : " + this.name + "\n" 
             + "Id : " + this.id;

@@ -57,6 +57,7 @@ public class Vehicle {
     public void setFuelTankCapacity(double fuelTankCapacity){}
 
 
+    @Override
     public String toString(){
         return "Make: " + this.make + "\n" 
         + "Model: " + this.model + "\n"
@@ -66,11 +67,7 @@ public class Vehicle {
 
 
     public boolean equals(Vehicle vehicle){
-        if (this.plateNumber == vehicle.plateNumber){
-            return true;
-        }else{
-            return false;
-        }
+        return this.plateNumber.equals(vehicle.plateNumber);
 
     }
 

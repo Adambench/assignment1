@@ -36,9 +36,9 @@ public class LeasingService {
 
     // Return a leased vehicle
     public void returnVehicle(Vehicle vehicle) {
-        for (int i = 0; i < leases.length; i++) {
-            if (leases[i].getVehicle().getPlateNumber().equals(vehicle.getPlateNumber()) && leases[i].getIsActive()) {
-                leases[i].completeLease();
+        for (Lease lease : leases) {
+            if (lease.getVehicle().getPlateNumber().equals(vehicle.getPlateNumber()) && lease.getIsActive()) {
+                lease.completeLease();
                 System.out.println("Vehicle " + vehicle.getPlateNumber() + " has been returned.");
                 return;
             }
@@ -48,8 +48,8 @@ public class LeasingService {
 
     // Check if a vehicle is currently leased
     public boolean isVehicleLeased(Vehicle vehicle) {
-        for (int i = 0; i < leases.length; i++) {
-            if (leases[i].getVehicle().equals(vehicle) && leases[i].getIsActive()) {
+        for (Lease lease : leases) {
+            if (lease.getVehicle().equals(vehicle) && lease.getIsActive()) {
                 return true;
             }
         }
@@ -59,9 +59,9 @@ public class LeasingService {
     // Show all vehicles leased by a specific client
     public void showLeasedVehiclesByClient(Client client) {
         System.out.println("Leased vehicles for client: " + client.getName());
-        for (int i = 0; i < leases.length; i++) {
-            if (leases[i].getClient().equals(client) && leases[i].getIsActive()) {
-                System.out.println(leases[i]);
+        for (Lease lease : leases) {
+            if (lease.getClient().equals(client) && lease.getIsActive()) {
+                System.out.println(lease);
             }
         }
     }
@@ -69,9 +69,9 @@ public class LeasingService {
     // Show all active leases
     public void showAllLeasedVehicles() {
         System.out.println("All currently leased vehicles:");
-        for (int i = 0; i < leases.length; i++) {
-            if (leases[i].getIsActive()) {
-                System.out.println(leases[i]);
+        for (Lease lease : leases) {
+            if (lease.getIsActive()) {
+                System.out.println(lease);
             }
         }
     }
