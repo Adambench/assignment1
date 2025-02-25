@@ -62,7 +62,7 @@ public class Vehicle {
         return "Make: " + this.make + "\n" 
         + "Model: " + this.model + "\n"
         + "Year: " + this.year + "\n"
-        + "Plate Number: " + this.plateNumber + "\n";
+        + "Plate Number: " + this.plateNumber;
     }
 
 
