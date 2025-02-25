@@ -1,5 +1,14 @@
 package Driver;
-
+/*
+ * Assignment 1
+ * Written by: Mountaga Sy 40312584 and Adam Benchekroun 40306874
+ * 
+ * This Java program is a vehicle leasing management system for RoyalRentals, allowing employees to lease vehicles to clients, 
+ * process returns, and view leased vehicles. It features a text-based menu where users can select clients, choose available 
+ * vehicles, and input lease and return dates. The system supports leasing operations, returning vehicles,
+ *  displaying all leased vehicles, and viewing leases by specific clients. It uses arrays to manage clients, vehicles, and leases,
+ *  and handles user input through
+ */
 import Client.*;
 import Vehicles.*;
 import java.util.Scanner;
