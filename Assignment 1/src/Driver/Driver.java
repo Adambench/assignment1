@@ -469,23 +469,11 @@ public class Driver {
             
         
             case 41 -> {
-                int j=0;
-                int k=0;
-                for (int i=0; i < vehicles[0].length;i++ ){
-                    if (vehicles[0][i].getMaxWeight() > vehicles[0][j].getMaxWeight()) j=i;
-                }
-                for (int i=0; i < vehicles[2].length;i++ ){
-                    if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
-                }
-
-                if (vehicles[0][j].getMaxWeight()>vehicles[0][k].getMaxWeight()) {
-                    System.out.println("The truck with the largest capacity is: " + vehicles[0][j]);
-                } else {
-                    System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
-                }
+                getLargestTruck(vehicles);
                 } 
 
             case 42 -> {
+                 copyVehicles(vehicles);
                 } 
 
             case 0 -> app = false;
@@ -661,5 +649,24 @@ public class Driver {
             default -> new Vehicle[0]; // Adding this default because I kept having an error for nothing "MuSt rEturN vEHiclE 🥸" :\
         }; 
     }
+    
+    public static void getLargestTruck(Vehicle[][] vehicles){
+        int k=0;  
+        for (int i=0; i < vehicles[2].length;i++ ){
+            if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
+        }
+            System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
+        
+    }
+   public static void copyVehicles(Vehicle[][] vehicles) {
+      Vehicle[] copyElectric_Trucks = new Vehicle[vehicles[0].length];
+      for (int i=0;i<vehicles[0].length;i++){
+        copyElectric_Trucks[i]= vehicles[0][i];
+
+      }
+      System.out.println("All electric trucks have been copied successfully!");
+   }
 
 }
+
+
