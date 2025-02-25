@@ -93,6 +93,8 @@ public class Driver {
                     System.out.print("Select choice :");
                     choice = sc.nextInt();
                     
+                    sc.nextLine();
+                    
                     switch (choice) {
                         case 11 -> {
                             System.out.println("""

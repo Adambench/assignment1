@@ -3,7 +3,7 @@ package Client;
 import Vehicles.Vehicle;
 
 public class LeasingService {
-    private Lease[] leases;
+    private Lease[] leases = new Lease[0];
     private Lease[] temp;
 
     public LeasingService() {
@@ -17,20 +17,22 @@ public class LeasingService {
             return;
         }
 
+        this.temp = new Lease[leases.length];
+
         // copy all leases into temporary array
         for (int i =0; i< leases.length; i++){
-            temp[i] = new Lease(leases[i]);
+            this.temp[i] = new Lease(leases[i]);
         }
 
         // add a place in the lease array
-        leases = new Lease[temp.length + 1];
+        this.leases = new Lease[temp.length + 1];
 
         // Copy back all the leases from the temp into the leases array
         for (int i = 0; i<temp.length; i++){
-            leases[i] = new Lease(temp[i]);
+            this.leases[i] = new Lease(temp[i]);
         }
 
-        leases[leases.length - 1] = new Lease(client, vehicle);
+        this.leases[leases.length - 1] = new Lease(client, vehicle);
         System.out.println("Vehicle " + vehicle.getPlateNumber() + " leased to " + client.getName());
     }
 
