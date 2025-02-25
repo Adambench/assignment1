@@ -10,7 +10,6 @@ public class Driver {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
-        @SuppressWarnings("unused")
         LeasingService leases = new LeasingService();
         
         
@@ -655,17 +654,16 @@ public class Driver {
         for (int i=0; i < vehicles[2].length;i++ ){
             if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
         }
-            System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
+        System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
         
     }
    public static void copyVehicles(Vehicle[][] vehicles) {
-      Vehicle[] copyElectric_Trucks = new Vehicle[vehicles[0].length];
-      for (int i=0;i<vehicles[0].length;i++){
-        copyElectric_Trucks[i]= vehicles[0][i];
-
-      }
+        Vehicle[] copyElectric_Trucks = new Vehicle[vehicles[0].length];
+        for (int i=0;i<vehicles[0].length;i++){
+            copyElectric_Trucks[i]= vehicles[0][i];
+        }
       System.out.println("All electric trucks have been copied successfully!");
-   }
+    }
 
 }
 
