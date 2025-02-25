@@ -3,7 +3,7 @@ package Client;
 public class Client {
     private final String id;
     private String name;
-    private static int idNumber = 1000;
+    private static int idNumber = 1001;
 
 
     public Client(){

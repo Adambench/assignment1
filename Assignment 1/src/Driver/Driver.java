@@ -92,6 +92,7 @@ public class Driver {
                     
                     System.out.print("Select choice :");
                     choice = sc.nextInt();
+                    sc.nextLine();
                     
                     switch (choice) {
                         case 11 -> {
@@ -103,11 +104,10 @@ public class Driver {
                                                4. Gasoline car 
                                                """);
                             vehicleTypeChoice = sc.nextInt();
-                            
+
                             switch (vehicleTypeChoice) {
                                 case 1 -> {
-                                    // Get all the necessary
-                                    sc.nextLine();
+                                    // Get all the necessary inputs
                                     System.out.println("What is the make (company) of the electric truck: ");
                                     make = sc.nextLine();
                                     System.out.println("What is the model of the electric truck: ");
@@ -130,7 +130,6 @@ public class Driver {
                                 }
                                 
                                 case 2 -> {
-                                    sc.nextLine();
                                     System.out.println("What is the make (company) of the electric car: ");
                                     make = sc.nextLine();
                                     System.out.println("What is the model of the electric car: ");
@@ -153,7 +152,6 @@ public class Driver {
                                 
                                 
                                 case 3 -> {
-                                    sc.nextLine();
                                     System.out.println("What is the make (company) of the diesel truck: ");
                                     make = sc.nextLine();
                                     System.out.println("What is the model of the diesel truck: ");
@@ -502,7 +500,7 @@ public class Driver {
 
             // Hard coded scenario
             case 2 -> {
-                
+
             }
             default -> System.out.println("Input a valid number");
         }
