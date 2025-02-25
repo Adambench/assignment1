@@ -7,7 +7,7 @@ package Driver;
  * process returns, and view leased vehicles. It features a text-based menu where users can select clients, choose available 
  * vehicles, and input lease and return dates. The system supports leasing operations, returning vehicles,
  *  displaying all leased vehicles, and viewing leases by specific clients. It uses arrays to manage clients, vehicles, and leases,
- *  and handles user input through
+ *  and handles user input through the Java Scanner
  */
 import Client.*;
 import Vehicles.*;
