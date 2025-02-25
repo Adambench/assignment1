@@ -477,11 +477,11 @@ public class Driver {
                     
                 
                     case 41 -> {
-                        getLargestTruck(vehicles);
+                        getLargestTruck(vehicles[2]);
                         } 
         
                     case 42 -> {
-                         copyVehicles(vehicles);
+                         copyVehicles(vehicles[0]);
                         } 
         
                     case 0 -> app = false;
@@ -502,7 +502,46 @@ public class Driver {
 
             // Hard coded scenario
             case 2 -> {
+                Electric_Car eCar1= new Electric_Car("Tesla", "X", 2022, 500, 5);
+                Electric_Car eCar2= new Electric_Car("Hundai", "Iconic", 2017, 600, 7);
+                Electric_Car eCar3= new Electric_Car("Tesla", "X", 2022, 500, 5);
+                Electric_Truck eTruck1= new Electric_Truck("Volkswagen", "Truck", 2015, 500, 100);
+                Electric_Truck eTruck2= new Electric_Truck("Tesla", "CyberTruck", 2015, 650, 70);
+                Electric_Truck eTruck3= new Electric_Truck("Nissan", "Leaf", 2021, 500, 120);
+                Diesel_Truck dTruck1= new Diesel_Truck("Ford","Ford-150", 2018, 90, 100);
+                Diesel_Truck dTruck2= new Diesel_Truck("Nissan","Navara", 2017, 300, 80);
+                Diesel_Truck dTruck3= new Diesel_Truck("Ford","Ford-150", 2018, 400, 90);
+                Gasoline_Car gCar1 = new Gasoline_Car("Toyota", "Rav4", 2013, 5);
+                Gasoline_Car gCar2 = new Gasoline_Car("Mazda", "CX5", 2016, 5);
+                Gasoline_Car gCar3 = new Gasoline_Car("Honda", "Civic", 2009, 5);
+                Client c1 = new Client("Mountaga");
+                Client c2 = new Client("Adam");
+                Client c3 = new Client("Abderrahmane");
+                eCar1.toString();
+                eCar2.toString();
+                eCar3.toString();
+                eTruck1.toString();
+                eTruck2.toString();
+                eTruck3.toString();
+                dTruck1.toString();
+                dTruck2.toString();
+                dTruck3.toString();
+                gCar1.toString();
+                gCar2.toString();
+                gCar3.toString();
+                c1.toString();
+                c2.toString();
+                c3.toString();
+                System.out.println(dTruck1.equals(gCar3));
+                System.out.println(gCar2.equals(gCar1));
+                System.out.println(eCar1.equals(eCar3));
+                Electric_Car[] eCarArr = {eCar1,eCar2,eCar3};
+                Diesel_Truck[] dTruckArr = {dTruck1,dTruck2,dTruck3};
+                Gasoline_Car[] gCarArr ={gCar1,gCar2,gCar3};
+                Electric_Truck[] eTruckArr ={eTruck1,eTruck2,eTruck3};
                 
+                getLargestTruck(dTruckArr);
+                copyVehicles(eTruckArr);;
             }
             default -> System.out.println("Input a valid number");
         }
@@ -668,18 +707,18 @@ public class Driver {
         }; 
     }
     
-    public static void getLargestTruck(Vehicle[][] vehicles){
+    public static void getLargestTruck(Vehicle[] vehicles){
         int k=0;  
-        for (int i=0; i < vehicles[2].length;i++ ){
-            if (vehicles[2][i].getMaxWeight() > vehicles[2][k].getMaxWeight()) k=i;
+        for (int i=0; i < vehicles.length;i++ ){
+            if (vehicles[i].getMaxWeight() > vehicles[k].getMaxWeight()) k=i;
         }
-        System.out.println("The truck with the largest capacity is: " + vehicles[2][k]);
+        System.out.println("The truck with the largest capacity is: " + vehicles[k]);
         
     }
-   public static void copyVehicles(Vehicle[][] vehicles) {
-        Vehicle[] copyElectric_Trucks = new Vehicle[vehicles[0].length];
-        for (int i=0;i<vehicles[0].length;i++){
-            copyElectric_Trucks[i]= vehicles[0][i];
+   public static void copyVehicles(Vehicle[] vehicles) {
+        Vehicle[] copyElectric_Trucks = new Vehicle[vehicles.length];
+        for (int i=0;i<vehicles.length;i++){
+            copyElectric_Trucks[i]= vehicles[i];
         }
       System.out.println("All electric trucks have been copied successfully!");
     }
