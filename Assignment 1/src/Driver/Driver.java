@@ -634,6 +634,16 @@ public class Driver {
 
     sc.close();
     
+
+    Electric_Car eCar1= new Electric_Car("Tesla", "X", 2022, 500, 5);
+    Electric_Car eCar2= new Electric_Car("Hundai", "Iconic", 2017, 600, 7);
+    Electric_Car eCar3= new Electric_Car("Tesla", "Y", 2024, 450, 5);
+    Electric_Truck eTruck1= new Electric_Truck("Volkswagen", "Truck", 2015, 500, 100);
+    Electric_Truck eTruck2= new Electric_Truck("Tesla", "CyberTruck", 2015, 650, 70);
+    Electric_Truck eTruck3= new Electric_Truck("Nissan", "Leaf", 2021, 500, 120);
+    Diesel_Truck dTruck1= new Diesel_Truck("Ford","Ford-150", 2018, 90, 100);
+    Diesel_Truck dTruck2= new Diesel_Truck("Nissan","Navara", 2017, 300, 80);
+    Diesel_Truck dTruck3= new Diesel_Truck("Ford","Ford-150", 2018, 400, 90);
 }
 
 
@@ -810,6 +820,7 @@ public class Driver {
         }
       System.out.println("All electric trucks have been copied successfully!");
     }
+
 
 }
 
