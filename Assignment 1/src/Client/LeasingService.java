@@ -11,7 +11,7 @@ public class LeasingService {
     }
 
     // Lease a vehicle to a client
-    public void leaseVehicle(Client client, Vehicle vehicle, String leaseDate, String returnDate) {
+    public void leaseVehicle(Client client, Vehicle vehicle) {
         if (isVehicleLeased(vehicle)) {
             System.out.println("Error: Vehicle " + vehicle.getPlateNumber() + " is already leased.");
             return;
@@ -30,7 +30,7 @@ public class LeasingService {
             leases[i] = new Lease(temp[i]);
         }
 
-        leases[leases.length - 1] = new Lease(client, vehicle, leaseDate, returnDate);
+        leases[leases.length - 1] = new Lease(client, vehicle);
         System.out.println("Vehicle " + vehicle.getPlateNumber() + " leased to " + client.getName());
     }
 
@@ -68,7 +68,7 @@ public class LeasingService {
 
     // Show all active leases
     public void showAllLeasedVehicles() {
-        System.out.println("All currently leased vehicles:");
+        System.out.println("\n\nAll currently leased vehicles:");
         for (Lease lease : leases) {
             if (lease.getIsActive()) {
                 System.out.println(lease);

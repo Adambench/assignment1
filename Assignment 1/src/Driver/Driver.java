@@ -46,6 +46,7 @@ public class Driver {
         double maxWeight;
         double fuelTankCapacity;
         String plateNumber;
+        boolean vehicleFound;
         
         // Client variables
         String clientName;
@@ -201,6 +202,8 @@ public class Driver {
             case 13 -> {
                 int indexOfArray = 0;
                 int indexOfVehicle = 0;
+                vehicleFound = false;
+
                 sc.nextLine();
                 System.out.println("Which vehicle would you like to update? (input plate number)");
                 plateNumber = sc.next();
@@ -211,9 +214,15 @@ public class Driver {
                         if(vehicles[i][j].getPlateNumber().equals(plateNumber)){
                             indexOfArray = i;
                             indexOfVehicle = j;
+                            vehicleFound = true;
                             break;
                         }
                     }
+                }
+
+                if (!vehicleFound){
+                    System.out.print("No vehicle found with this plate number!");
+                    return;
                 }
 
                 System.out.println("You will now have to input the changes you want to apply to this vehicle:");
@@ -356,6 +365,10 @@ public class Driver {
                 clientFound = false;
                 clientIndex = 0;
 
+                int indexOfArray = 0;
+                int indexOfVehicle = 0;
+                vehicleFound = false;
+
                 // Get plate number
                 System.out.print("Enter the vehicle plate number : ");
                 plateNumber = sc.nextLine();
@@ -372,22 +385,86 @@ public class Driver {
                         break;
                     }
                 }
+
                 if(!clientFound){
                     System.out.print("Client not found!");
                     return;
                 }
 
-                // Get index of vehicle
+                // Get the index of the vehicle with the plate number
+                for (int i = 0; i<4; i++ ){
+                    for(int j =0; j<vehicles[i].length; j++){
+                        if(vehicles[i][j].getPlateNumber().equals(plateNumber)){
+                            indexOfArray = i;
+                            indexOfVehicle = j;
+                            vehicleFound = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!vehicleFound){
+                    System.out.print("No vehicle found with this plate number!");
+                    return;
+                }
+                leases.leaseVehicle(client_Arr[clientIndex], vehicles[indexOfArray][indexOfVehicle]);
 
             }
 
             case 32 -> {
+                int indexOfArray = 0;
+                int indexOfVehicle = 0;
+                vehicleFound = false;
+
+                System.out.println("Which vehicle would you like to return ? (enter plate number)");
+                plateNumber = sc.nextLine();
+
+                // Get the index of the vehicle with the plate number
+                for (int i = 0; i<4; i++ ){
+                    for(int j =0; j<vehicles[i].length; j++){
+                        if(vehicles[i][j].getPlateNumber().equals(plateNumber)){
+                            indexOfArray = i;
+                            indexOfVehicle = j;
+                            vehicleFound = true;
+                            break;
+                        }
+                    }
+                }
+            
+                if (!vehicleFound){
+                    System.out.print("No vehicle found with this plate number!");
+                    return;
+                }
+
+                leases.returnVehicle(vehicles[indexOfArray][indexOfVehicle]);
                 }
 
             case 33 -> {
+                clientFound = false;
+                clientIndex = 0;
+
+                System.out.println("Which client's lease(s) would you like to see? (enter client ID)");
+                clientId = sc.nextLine();
+                
+                // Get index of client
+                for (int i = 0; i<client_Arr.length; i++){
+                    if (client_Arr[i].getId().equals(clientId)){
+                        clientIndex = i;
+                        clientFound = true;
+                        break;
+                    }
+                }
+            
+                if(!clientFound){
+                    System.out.print("Client not found!");
+                    return;
                 }
 
+                leases.showLeasedVehiclesByClient(client_Arr[clientIndex]);
+            }
+
             case 34 -> {
+                leases.showAllLeasedVehicles();
                 }  
             
         
